@@ -1,17 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+
+  <script>
+    //设置默认size 
+    const baseSize = 100
+    // 配置默认宽高比例的方法
+    function getRate() {
+      let htmlWidth = document.documentElement.clietWidth || document.body.clientWidth
+      let htmlHeight = document.documentElement.clietHeight || document.body.clientHeight
+      return Math.min(htmlHeight / 768, 2)
+    }
+    // 设置单位为REM的方法
+    function getRem() {
+      document.documentElement.style.fontSize = (baseSize * getRate()) + 'px'
+    }
+    // 调用
+    setRem()
+    window.onresize = function () {
+      setRem()
+    }
+    // 配置页面刷新时间
+    let refreshTime = 100000
+  </script>
+</head>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+      Please enable it to continue.</strong>
+  </noscript>
+  <div id="app"></div>
+  <!-- built files will be auto injected -->
+</body>
+
 </html>
