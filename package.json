@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.6.4",
     "element-ui": "^2.13.2",
-    "fontmin": "^0.9.8",
+    "fontmin": "^0.9.9",
     "jquery": "^3.5.1",
     "moment": "^2.26.0",
     "vue": "^2.6.11",
